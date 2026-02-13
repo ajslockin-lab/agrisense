@@ -28,14 +28,15 @@ export default function SubscriptionPage() {
     const tiers = [
         {
             name: "Normal",
-            monthlyPrice: 100,
-            yearlyPrice: 1000,
+            monthlyPrice: 1000,
+            yearlyPrice: 10000,
             description: "Essential tools for small farms",
             features: [
+                "Real-time IoT Sensor Data",
+                "Basic Crop Health Advice",
                 "Basic Weather Forecasts",
                 "Market Prices (Daily Updates)",
-                "Community Support",
-                "Pest Identification (Limited)"
+                "Community Support"
             ],
             icon: Shield,
             color: "text-blue-500",
@@ -44,15 +45,16 @@ export default function SubscriptionPage() {
         },
         {
             name: "Pro",
-            monthlyPrice: 250,
-            yearlyPrice: 2500,
+            monthlyPrice: 2500,
+            yearlyPrice: 25000,
             description: "Advanced analytics for growing farms",
             features: [
                 "Everything in Normal",
-                "Real-time Crop Health Analysis",
+                "AI Irrigation & Fertilization Alerts",
+                "Market Price Planning Tools",
                 "AI Advisor (Unlimited)",
                 "Priority Support",
-                "Detailed Market Trends"
+                "Yield Optimization Insights"
             ],
             icon: Zap,
             color: "text-primary",
@@ -62,14 +64,15 @@ export default function SubscriptionPage() {
         },
         {
             name: "Premium",
-            monthlyPrice: 500,
-            yearlyPrice: 5000,
+            monthlyPrice: 5000,
+            yearlyPrice: 50000,
             description: "Complete solution for professional farming",
             features: [
                 "Everything in Pro",
-                "Drone Integration Support",
-                "Advanced Disease Diagnostics",
+                "Drone-Based Pest Scouting",
+                "Field Health Aerial Imaging",
                 "1-on-1 Expert Consultation",
+                "Advanced Disease Diagnostics",
                 "Export Data Reports"
             ],
             icon: Crown,
@@ -203,9 +206,9 @@ export default function SubscriptionPage() {
                         <CardContent className="space-y-6">
                             <div>
                                 <div className="flex items-baseline gap-1">
-                                    <span className="text-sm font-bold text-muted-foreground">₹</span>
-                                    <span className="text-2xl font-black tracking-tight">{formatPrice(isYearly ? tier.yearlyPrice : tier.monthlyPrice)}</span>
-                                    <span className="text-muted-foreground font-medium text-xs">/{isYearly ? 'year' : 'mo'}</span>
+                                    <span className="text-xs font-bold text-muted-foreground">₹</span>
+                                    <span className="text-xl font-black tracking-tight">{formatPrice(isYearly ? tier.yearlyPrice : tier.monthlyPrice)}</span>
+                                    <span className="text-muted-foreground font-medium text-[11px]">/{isYearly ? 'year' : 'mo'}</span>
                                 </div>
                                 {isYearly && (
                                     <span className="text-xs text-green-600 font-bold mt-2 inline-block">
