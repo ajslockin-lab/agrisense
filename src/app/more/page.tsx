@@ -1,7 +1,7 @@
 "use client";
 
 import { Card, CardContent } from '@/components/ui/card';
-import { ShieldCheck, Cloud, FileText, Landmark, Settings, ChevronRight } from 'lucide-react';
+import { ShieldCheck, Cloud, FileText, Landmark, Settings, ChevronRight, Crown, Plane, GraduationCap } from 'lucide-react';
 import Link from 'next/link';
 import { useSensors } from '@/context/SensorContext';
 import { cn } from '@/lib/utils';
@@ -10,42 +10,66 @@ export default function MoreHub() {
   const { t } = useSensors();
 
   const services = [
-    { 
-      title: t('more_doctor'), 
-      desc: 'AI Disease Diagnosis', 
-      icon: ShieldCheck, 
+    {
+      title: "Subscription Plans",
+      desc: 'Manage Your Plan',
+      icon: Crown,
+      href: '/subscription',
+      color: 'bg-yellow-500',
+      iconColor: 'text-yellow-500'
+    },
+    {
+      title: "Drone Services",
+      desc: 'Aerial Intelligence',
+      icon: Plane,
+      href: '/drone',
+      color: 'bg-blue-600',
+      iconColor: 'text-blue-600'
+    },
+    {
+      title: "Education Hub",
+      desc: 'Learn Smart Farming',
+      icon: GraduationCap,
+      href: '/education',
+      color: 'bg-indigo-500',
+      iconColor: 'text-indigo-500'
+    },
+    {
+      title: t('more_doctor'),
+      desc: 'AI Disease Diagnosis',
+      icon: ShieldCheck,
       href: '/diagnosis',
       color: 'bg-green-500',
       iconColor: 'text-green-500'
     },
-    { 
-      title: t('more_weather'), 
-      desc: '7-Day Farm Forecast', 
-      icon: Cloud, 
+    {
+      title: t('more_weather'),
+      desc: '7-Day Farm Forecast',
+      icon: Cloud,
       href: '/weather',
       color: 'bg-blue-500',
       iconColor: 'text-blue-500'
     },
-    { 
-      title: t('more_journal'), 
-      desc: 'Field Observations', 
-      icon: FileText, 
+    {
+      title: t('more_journal'),
+      desc: 'Field Observations',
+      icon: FileText,
       href: '/journal',
       color: 'bg-orange-500',
       iconColor: 'text-orange-500'
     },
-    { 
-      title: t('more_schemes'), 
-      desc: 'Govt. Subsidies', 
-      icon: Landmark, 
+    {
+      title: t('more_schemes'),
+      desc: 'Govt. Subsidies',
+      icon: Landmark,
       href: '/schemes',
       color: 'bg-purple-500',
       iconColor: 'text-purple-500'
     },
-    { 
-      title: t('settings_title'), 
-      desc: 'Profile & App Options', 
-      icon: Settings, 
+    {
+      title: t('settings_title'),
+      desc: 'Profile & App Options',
+      icon: Settings,
       href: '/settings',
       color: 'bg-gray-500',
       iconColor: 'text-gray-500'

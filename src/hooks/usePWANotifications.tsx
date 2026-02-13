@@ -2,6 +2,10 @@
 
 import { useEffect, useState } from 'react';
 
+export interface ExtendedNotificationOptions extends NotificationOptions {
+  vibrate?: number[];
+}
+
 export function usePWANotifications() {
   const [permission, setPermission] = useState<NotificationPermission>('default');
   const [isSupported, setIsSupported] = useState(false);
@@ -60,26 +64,26 @@ export function usePWANotifications() {
   const sendPriceAlert = (crop: string, price: number, change: number) => {
     const direction = change > 0 ? '↑' : '↓';
     const emoji = change > 0 ? '📈' : '📉';
-    
+
     return sendNotification(`${emoji} ${crop} Price Update`, {
       body: `₹${price}/quintal (${direction} ${Math.abs(change).toFixed(1)}%)`,
       tag: 'price-alert',
       requireInteraction: false,
       vibrate: [200, 100, 200],
       data: { type: 'price', crop, price, change },
-    });
+    } as ExtendedNotificationOptions);
   };
 
   const sendWeatherAlert = (message: string, severity: 'info' | 'warning' | 'severe') => {
     const emoji = severity === 'severe' ? '⚠️' : severity === 'warning' ? '🌤️' : '☁️';
-    
+
     return sendNotification(`${emoji} Weather Alert`, {
       body: message,
       tag: 'weather-alert',
       requireInteraction: severity === 'severe',
       vibrate: severity === 'severe' ? [300, 100, 300, 100, 300] : [200, 100, 200],
       data: { type: 'weather', severity },
-    });
+    } as ExtendedNotificationOptions);
   };
 
   const sendSensorAlert = (sensorName: string, value: number, threshold: number) => {
@@ -89,7 +93,7 @@ export function usePWANotifications() {
       requireInteraction: true,
       vibrate: [300, 100, 300],
       data: { type: 'sensor', sensorName, value, threshold },
-    });
+    } as ExtendedNotificationOptions);
   };
 
   const sendAdvisorTip = (tip: string) => {
@@ -150,9 +154,9 @@ export function NotificationExample() {
       <div className="flex items-center justify-between">
         <span className="text-sm">Notifications</span>
         <span className="text-xs px-2 py-1 rounded-full bg-muted">
-          {permission === 'granted' ? '✓ Enabled' : 
-           permission === 'denied' ? '✗ Blocked' : 
-           'Not set'}
+          {permission === 'granted' ? '✓ Enabled' :
+            permission === 'denied' ? '✗ Blocked' :
+              'Not set'}
         </span>
       </div>
 

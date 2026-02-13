@@ -104,7 +104,7 @@ export default function AIAdvisor() {
   if (!mounted) return null;
 
   return (
-    <div className="space-y-8 animate-in fade-in slide-in-from-bottom-6 duration-700">
+    <div className="space-y-8 animate-in fade-in slide-in-from-bottom-3 duration-300">
       <section className="space-y-4">
         <div className="flex items-center justify-between">
           <div>

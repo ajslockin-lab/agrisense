@@ -40,7 +40,7 @@ export default function HomeDashboard() {
   if (!mounted) return null;
 
   return (
-    <div className="space-y-7 animate-in fade-in slide-in-from-bottom-6 duration-700 ease-out pb-24">
+    <div className="space-y-7 animate-in fade-in slide-in-from-bottom-3 duration-300 ease-out pb-24">
       {/* Live Alerts Header */}
       {sensors.soilMoisture < 65 && (
         <div className="bg-destructive/10 border border-destructive/20 p-4 rounded-3xl flex items-center gap-3 animate-bounce shadow-lg">
