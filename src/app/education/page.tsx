@@ -2,16 +2,17 @@
 
 import { useState } from "react";
 import {
-    BookOpen, PlayCircle, Award, Users, Search, Download,
-    CheckCircle2, Star, Clock, FileText, ChevronRight,
-    Trophy, Book, Play, Lock, Sparkles, Filter
+    PlayCircle, Award, Search, Download,
+    CheckCircle2, Star, FileText, ChevronRight,
+    Trophy, Lock, Sparkles, Filter
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { useToast } from "@/hooks/use-toast";
+import { cn } from "@/lib/utils";
 
 export default function EducationPage() {
     const { toast } = useToast();
@@ -57,7 +58,8 @@ export default function EducationPage() {
             title: "Sustainable Farming 101",
             lessons: "12 Lessons",
             duration: "2h 30m",
-            color: "green",
+            bg: "bg-green-500/10",
+            iconColor: "text-green-500/80",
             level: "Beginner",
             points: 500
         },
@@ -66,7 +68,8 @@ export default function EducationPage() {
             title: "Advanced Pest Management",
             lessons: "8 Lessons",
             duration: "1h 45m",
-            color: "red",
+            bg: "bg-red-500/10",
+            iconColor: "text-red-500/80",
             level: "Intermediate",
             points: 750
         },
@@ -75,7 +78,8 @@ export default function EducationPage() {
             title: "Soil Health Mastery",
             lessons: "15 Lessons",
             duration: "3h 15m",
-            color: "amber",
+            bg: "bg-amber-500/10",
+            iconColor: "text-amber-500/80",
             level: "Advanced",
             points: 1200
         }
@@ -162,8 +166,8 @@ export default function EducationPage() {
                     {courses.map((course) => (
                         <Card key={course.id} className="group border-none bg-white/50 dark:bg-card/40 backdrop-blur-md shadow-sm hover:shadow-xl transition-all duration-300 rounded-[2rem] overflow-hidden border border-white/10">
                             <CardContent className="p-2 space-y-4">
-                                <div className={`aspect-[4/3] rounded-[1.5rem] bg-${course.color}-500/10 flex items-center justify-center relative overflow-hidden group-hover:scale-[0.98] transition-transform`}>
-                                    <PlayCircle className={`w-16 h-16 text-${course.color}-500/80 group-hover:scale-110 transition-transform cursor-pointer`} onClick={() => toggleVideo(course.id, course.title)} />
+                                <div className={cn("aspect-[4/3] rounded-[1.5rem] flex items-center justify-center relative overflow-hidden group-hover:scale-[0.98] transition-transform", course.bg)}>
+                                    <PlayCircle className={cn("w-16 h-16 group-hover:scale-110 transition-transform cursor-pointer", course.iconColor)} onClick={() => toggleVideo(course.id, course.title)} />
                                     {completedVideos.includes(course.id) && (
                                         <div className="absolute top-4 right-4 bg-green-500 text-white p-2 rounded-full animate-in zoom-in-50">
                                             <CheckCircle2 className="w-4 h-4" />
